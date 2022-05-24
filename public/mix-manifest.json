@@ -1,0 +1,8 @@
+{
+    "/js/front/app.js": "/js/front/app.js",
+    "/js/admin/app.js": "/js/admin/app.js",
+    "/css/admin/theme.css": "/css/admin/theme.css",
+    "/css/front/theme.css": "/css/front/theme.css",
+    "/css/admin/style.css": "/css/admin/style.css",
+    "/css/front/style.css": "/css/front/style.css"
+}
