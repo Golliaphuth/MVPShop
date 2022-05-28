@@ -22,6 +22,7 @@ class Product extends Model
         'slug',
         'brand_ref',
         'category_ref',
+        'protected',
         'deleted_at',
     ];
 
@@ -43,6 +44,11 @@ class Product extends Model
     public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function mainImage(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(ProductImage::class)->where('main', 1);
     }
 
     public function attributes(): \Illuminate\Database\Eloquent\Relations\HasMany

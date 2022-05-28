@@ -6,7 +6,7 @@ window._ = require('lodash');
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-require('bootstrap');
+// require('bootstrap');
 require('@fortawesome/fontawesome-free');
 import $ from 'jquery';
 window.$ = window.jQuery = $;

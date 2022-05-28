@@ -8,6 +8,6 @@ mix
 
     /** ADMIN */
     .js('resources/js/admin/app.js', 'public/js/admin')
-    .sass('resources/scss/admin/theme.scss', 'public/css/admin').sourceMaps()
+    .sass('resources/scss/admin/fontawesome.scss', 'public/css/admin').sourceMaps()
     .sass('resources/scss/admin/style.scss', 'public/css/admin').sourceMaps()
 ;

@@ -138,6 +138,8 @@ return [
     |
     */
 
+    'product_image_path' => env('PRODUCT_IMAGE_PATH', 'public/products/images/'),
+
     'providers' => [
 
         /*

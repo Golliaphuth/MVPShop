@@ -14,6 +14,7 @@ class ProductImage extends Model
         'link',
         'order',
         'main',
+        'filename',
     ];
 
     public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -21,7 +22,8 @@ class ProductImage extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function scopeMain($query) {
+    public function scopeMain($query)
+    {
         return $query->where('main', 1);
     }
 }

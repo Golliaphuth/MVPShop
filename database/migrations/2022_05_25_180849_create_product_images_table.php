@@ -19,6 +19,7 @@ class CreateProductImagesTable extends Migration
             $table->string('link');
             $table->integer('order');
             $table->tinyInteger('main')->default(0);
+            $table->string('filename')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id', 'images_to_products')

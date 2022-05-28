@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->string('brand_ref')->nullable();
             $table->string('category_ref')->nullable();
+            $table->boolean('protected')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
