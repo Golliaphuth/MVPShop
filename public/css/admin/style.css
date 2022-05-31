@@ -1,1 +1,40 @@
+.table-responsive {
+  overflow-x: hidden !important;
+}
 
+.dataTables_filter input {
+  border: 1px solid #a1a1a1;
+}
+
+.datatable-paginator-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  margin-top: 30px;
+}
+
+.datatable-info-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  margin-top: 15px;
+}
+
+.datatable-search-form {
+  display: block;
+  position: relative;
+  padding: 0 50px;
+}
+.datatable-search-form label {
+  display: block;
+  position: relative;
+}
+.datatable-search-form input[type=search].form-control-sm {
+  font-size: 20px;
+}
+
+.dataTables_empty {
+  text-align: center;
+}

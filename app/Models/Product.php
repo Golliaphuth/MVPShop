@@ -36,6 +36,11 @@ class Product extends Model
         return $this->hasOne(ProductTranslate::class)->where('lang', app()->getLocale());
     }
 
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function price(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(ProductPrice::class);

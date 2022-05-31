@@ -1,5 +1,7 @@
 @extends('front.layouts.app')
 
+@section('title', __('common.home'))
+
 @section('content')
     <div class="container pt-0 pb-0">
         <div class="row d-flex justify-content-center align-items-center" style="min-height: 100vh">

@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 class ProductImportCommand extends Command
 {
 
-    protected $signature = 'product:import {--debug} {--full}';
+    protected $signature = 'product:import {--debug} {--full} {--withoutDownload}';
     protected $description = 'Import products from B2B';
 
     public function __construct()
@@ -31,6 +31,7 @@ class ProductImportCommand extends Command
     {
         $debug = $this->option('debug');
         $full = $this->option('full');
+        $withoutDownload = $this->option('withoutDownload');
 
         $start = Carbon::now();
 
@@ -165,7 +166,7 @@ class ProductImportCommand extends Command
 
                 /** MAIN */
                 if($full) {
-                    $p['main']['slug'] = (isset($p['main']['name']['ru'])) ? Str::slug($p['main']['name']['ru'] . '-' . $p['main']['vendorCode']) : (isset($p['main']['name']['uk'])) ? Str::slug($p['main']['name']['uk'] . '-' . $p['main']['vendorCode']) : Str::uuid();
+                    $p['main']['slug'] = Str::slug($p['main']['name']['ru'] . '-' . $p['main']['vendorCode']);
                     $p['main']['brand_id'] = $brands[$p['main']['brand']];
                     $p['main']['brand_ref'] = $p['main']['brand'];
                     $p['main']['category_id'] = $categories[$p['main']['category']];
@@ -224,17 +225,17 @@ class ProductImportCommand extends Command
                 if($full) {
                     $product->load('images');
                     $product->images()->updateOrCreate(['order' => 0], [
-                        'link' => $p['images']['main'], 'order' => 0, 'main' => 1
+                        'link' => $p['images']['main'], 'order' => 0, 'main' => 1, 'filename' => ($withoutDownload) ? md5($p['images']['main']).'.jpg' : null
                     ]);
                     foreach ($p['images']['additional'] as $order => $img) {
                         $product->images()->updateOrCreate(['order' => $order], [
-                            'link' => $img, 'order' => $order, 'main' => 0
+                            'link' => $img, 'order' => $order, 'main' => 0, 'filename' => ($withoutDownload) ? md5($img).'.jpg' : null
                         ]);
                     }
                 }
 
                 /** IMAGES DOWNLOADING */
-                if($full) {
+                if($full and !$withoutDownload) {
                     JobProductImageDownload::dispatch($product)->onQueue('import_images');
                 }
 

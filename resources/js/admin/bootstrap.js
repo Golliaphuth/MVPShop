@@ -10,6 +10,12 @@ window._ = require('lodash');
 require('@fortawesome/fontawesome-free');
 import $ from 'jquery';
 window.$ = window.jQuery = $;
+require('jquery-ui/ui/widgets/sortable');
+require('select2');
+require('./datatables-locale.js');
+// const dt = require('datatables.net');
+// const dt = require('datatables.net-bs4');
+const dt = require('datatables.net-fixedheader-bs4');
 
 
 window.axios = require('axios');

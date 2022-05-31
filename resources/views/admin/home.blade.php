@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Dashboard');
+@section('title', 'Dashboard')
 
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">

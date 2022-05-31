@@ -22,4 +22,16 @@ class ProductService
             }
         }
     }
+
+    public function forceSyncImages(Product $product) {
+        $product->load('images');
+        foreach($product->images as $image) {
+            $filename = md5($image->link).'.jpg';
+            $data = Http::get($image->link)->body();
+            Storage::disk('products')->put($filename, $data);
+            $image->filename = $filename;
+            $image->save();
+        }
+    }
+
 }

@@ -7,10 +7,13 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
-                    <a href="#" class="nav-link text-body font-weight-bold px-0">
-                        <i class="fa-solid fa-power-off me-sm-1" aria-hidden="true"></i>
-                        <span class="d-sm-inline d-none">Выйти</span>
-                    </a>
+                    <form action="{{ route('admin.logout') }}" method="POST">
+                        @csrf
+                        <button class="nav-link text-body font-weight-bold px-0" type="submit" style="font-weight: normal; border: none;">
+                            <i class="fa-solid fa-power-off me-sm-1" aria-hidden="true"></i>
+                            <span class="d-sm-inline d-none">Выйти</span>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>

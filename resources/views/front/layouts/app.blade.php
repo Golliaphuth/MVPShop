@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/front/theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/front/style.css') }}">
         @stack('styles')
-        <title>Hello, world!</title>
+        <title>@yield('title') | {{ env('APP_NAME') }}</title>
     </head>
     <body>
         @include('front.components.navbar')

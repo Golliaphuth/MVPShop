@@ -86,6 +86,8 @@ return [
         'ru',
     ],
 
+    'locale_admin' => env('LOCALE_ADMIN', 'ru'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
