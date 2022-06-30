@@ -42,11 +42,31 @@ return [
             'visibility' => 'public',
         ],
 
+        'defaults' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/defaults/'),
+            'url' => env('APP_URL').'/storage/defaults',
+            'visibility' => 'public',
+        ],
+
+        'categories' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/categories/'),
+            'url' => env('APP_URL').'/storage/categories',
+            'visibility' => 'public',
+        ],
+
         'products' => [
             'driver' => 'local',
             'root' => storage_path('app/public/products/'),
             'url' => env('APP_URL').'/storage/products',
             'visibility' => 'public',
+        ],
+
+        'import' => [
+            'driver' => 'local',
+            'root' => storage_path('app/import/'),
+            'visibility' => 'private',
         ],
 
         's3' => [

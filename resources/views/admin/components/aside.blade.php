@@ -35,15 +35,16 @@
             <li class="nav-item">
                 <a class="nav-link text-white @if(Route::currentRouteName() == 'admin.products.index') active bg-gradient-primary @endif" href="{{ route('admin.products.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-lg fa-cubes"></i>
+                        <i class="fa-solid fa-lg fa-boxes-stacked"></i>
                     </div>
                     <span class="nav-link-text ms-1">Товары</span>
                 </a>
             </li>
 
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Настройки</h6>
-            </li>
+{{--            <li class="nav-item mt-3">--}}
+{{--                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Настройки</h6>--}}
+{{--            </li>--}}
+
 
             <li class="nav-item">
                 <a class="nav-link text-white @if(Route::currentRouteName() == 'admin.categories.index') active bg-gradient-primary @endif" href="{{ route('admin.categories.index') }}">
@@ -51,6 +52,15 @@
                         <i class="fa-solid fa-lg fa-cubes"></i>
                     </div>
                     <span class="nav-link-text ms-1">Категории</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-white @if(Route::currentRouteName() == 'admin.marketing.index') active bg-gradient-primary @endif" href="#">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-lg fa-bullhorn"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Маркетинг</span>
                 </a>
             </li>
 
@@ -81,9 +91,18 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link text-white @if(Route::currentRouteName() == 'admin.import.index') active bg-gradient-primary @endif" href="{{ route('admin.import.index') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-lg fa-cloud-arrow-up"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Импорт</span>
+                </a>
+            </li>
+
         </ul>
     </div>
-    <div class="sidenav-footer position-absolute w-100 bottom-0">
+{{--    <div class="sidenav-footer position-absolute w-100 bottom-0">--}}
 
-    </div>
+{{--    </div>--}}
 </aside>

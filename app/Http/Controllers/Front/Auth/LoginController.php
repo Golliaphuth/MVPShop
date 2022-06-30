@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Front\UserLoginRequest;
+use App\Http\Requests\Front\CustomerLoginRequest;
+use App\Http\Requests\Front\CustomerRegistrationRequest;
+use App\Models\Customer;
+use App\Services\ICartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -15,11 +19,12 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function authenticate(UserLoginRequest $request): \Illuminate\Http\JsonResponse
+    public function authenticate(CustomerLoginRequest $request, ICartService $service): \Illuminate\Http\JsonResponse
     {
         $credentials = $request->except('_token');
         if (Auth::attempt($credentials, true)) {
             $request->session()->regenerate();
+            $service->setCartCustomer();
             return response()->json('ok', 200);
         }
 
@@ -28,10 +33,19 @@ class LoginController extends Controller
         ], 403);
     }
 
+    public function registration(CustomerRegistrationRequest $request): \Illuminate\Http\JsonResponse
+    {
+        $customerData = $request->all();
+        $customerData['password'] = Hash::make($customerData['password']);
+        $customer = Customer::create($customerData);
+        auth()->guard('web')->login($customer);
+        return response()->json('ok', 200);
+    }
+
     public function logout(Request $request): \Illuminate\Http\RedirectResponse
     {
         Auth::logout();
-        $request->session()->regenerate();
+        $request->session()->invalidate();
         return back();
     }
 }

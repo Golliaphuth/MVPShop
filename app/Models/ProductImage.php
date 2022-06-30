@@ -19,7 +19,8 @@ class ProductImage extends Model
     ];
 
     protected $appends = [
-        'path'
+        'path',
+        'url',
     ];
 
     public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -35,5 +36,10 @@ class ProductImage extends Model
     public function scopeMain($query)
     {
         return $query->where('main', 1);
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return (Storage::disk('products')->exists($this->filename)) ? Storage::disk('products')->url($this->filename) : Storage::disk('defaults')->url('product.jpg');
     }
 }

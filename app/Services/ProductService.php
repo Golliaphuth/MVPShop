@@ -15,9 +15,11 @@ class ProductService
         foreach($product->images as $image) {
             $filename = md5($image->link).'.jpg';
             if ($image->filename == null and $image->filename != $filename) {
-                $data = Http::get($image->link)->body();
-                Storage::disk('products')->put($filename, $data);
-                $image->filename = $filename;
+                $response = Http::get($image->link)->body();
+                if($response->successful()) {
+                    Storage::disk('products')->put($filename, $response->body());
+                    $image->filename = $filename;
+                }
                 $image->save();
             }
         }

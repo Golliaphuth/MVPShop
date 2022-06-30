@@ -10,10 +10,12 @@ class CategoryController extends AdminController
     public function index(Request $request)
     {
 
-        $categories = Category::with('childs')->whereNull('parent_ref')->get();
+        $categories = Category::with('children')->main()->get();
+        $categories_all = Category::with('translate')->get()->sortBy('translate.name');
 
         return view('admin.categories.index', [
-            'categories' => $categories
+            'categories' => $categories,
+            'categories_all' => $categories_all,
         ]);
     }
 }

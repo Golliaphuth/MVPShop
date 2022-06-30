@@ -15,9 +15,13 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('ref');
-            $table->string('parent_ref')->nullable();
-            $table->string('image')->nullable();
+            $table->bigInteger('parent_id')->unsigned()->nullable();
+            $table->string('domain')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('ref')->nullable();
+            $table->string('link')->nullable();
+            $table->string('filename')->nullable();
+            $table->boolean('protected')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

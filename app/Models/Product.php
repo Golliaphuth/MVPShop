@@ -22,8 +22,24 @@ class Product extends Model
         'slug',
         'brand_ref',
         'category_ref',
+        'retail',
+        'purchase',
         'protected',
+        'new',
+        'hot',
+        'sale',
+        'sold',
         'deleted_at',
+    ];
+
+    protected $with = [
+        'mainImage'
+    ];
+
+    protected $appends = [
+        'attributesShort',
+        'attributesFull',
+        'breadcrumbs',
     ];
 
     public function translates(): \Illuminate\Database\Eloquent\Relations\HasMany
@@ -41,11 +57,6 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function price(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(ProductPrice::class);
-    }
-
     public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ProductImage::class);
@@ -58,6 +69,53 @@ class Product extends Model
 
     public function attributes(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(ProductToAttribute::class);
+        return $this->hasMany(ProductToAttribute::class)->with('translate');
+    }
+
+    public function getAttributesShortAttribute(): \Illuminate\Support\Collection
+    {
+        $options = collect($this->hasMany(ProductToAttribute::class)
+            ->with('translate', 'attribute', 'attribute.translate')
+            ->get()
+        )->keyBy('attribute.ref');
+
+        $needed = config('sandi.short');
+        $sorted = collect(array_replace($needed, $options->intersectByKeys($needed)->toArray()));
+        foreach($sorted as $key => $s) {
+            if(!is_array($s)) {
+                $sorted->forget($key);
+            }
+        }
+        return $sorted;
+    }
+
+    public function getAttributesFullAttribute(): \Illuminate\Support\Collection
+    {
+        $options = collect($this->hasMany(ProductToAttribute::class)
+            ->with('translate', 'attribute', 'attribute.translate')
+            ->get()
+        )->keyBy('attribute.ref');
+
+        $needed = config('sandi.full');
+        $sorted = collect(array_replace($needed, $options->intersectByKeys($needed)->toArray()));
+        foreach($sorted as $key => $s) {
+            if(!is_array($s)) {
+                $sorted->forget($key);
+            }
+        }
+        return $sorted;
+    }
+
+    public function getBreadcrumbsAttribute(): \Illuminate\Support\Collection
+    {
+        $breadcrumbs = collect([]);
+        $category = $this->category;
+        while ($category->parent) {
+            $breadcrumbs->push($category);
+            $category = $category->parent;
+        }
+        $breadcrumbs->push($category);
+
+        return $breadcrumbs->reverse();
     }
 }

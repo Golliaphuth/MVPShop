@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends MainController
 {
     public function index()
     {
-        return view('front.home');
+        return view('front.index', $this->data);
     }
 }

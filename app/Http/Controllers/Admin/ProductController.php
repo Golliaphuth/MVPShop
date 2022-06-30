@@ -16,6 +16,8 @@ class ProductController extends AdminController
             return $category->translate->name;
         });
 
+//        dd(Product::with('category', 'category.translate')->first());
+
         return view('admin.products.index', [
             'categories' => $categories
         ]);
@@ -32,7 +34,7 @@ class ProductController extends AdminController
 
         $products = [];
         if($query['search']['value'] == null) {
-            $products = Product::with('translate', 'category.translate', 'mainImage', 'price')
+            $products = Product::with('translate', 'category', 'category.translate', 'mainImage', 'price')
                 ->skip(intval($query['start']))
                 ->limit(intval($query['length']))
                 ->get();

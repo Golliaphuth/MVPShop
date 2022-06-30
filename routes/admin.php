@@ -25,6 +25,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
         Route::get('/', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('index');
     });
 
+    Route::group(['prefix' => 'import', 'as' => 'import.'], function(){
+        Route::get('/', [\App\Http\Controllers\Admin\ImportController::class, 'index'])->name('index');
+        Route::post('/options', [\App\Http\Controllers\Admin\ImportController::class, 'optionsStore'])->name('options');
+        Route::post('/start', [\App\Http\Controllers\Admin\ImportController::class, 'start'])->name('start');
+    });
 
     Route::group(['prefix' => 'json', 'as' => 'json.'], function(){
         Route::group(['prefix' => 'products', 'as' => 'products.'], function() {

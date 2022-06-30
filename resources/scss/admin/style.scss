@@ -1,3 +1,20 @@
+@import "select-control";
+@import "preloader";
+
+.btn {
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.btn-xs {
+    padding: 0.375rem 0.6rem;
+    font-size: 0.7rem;
+    border-radius: 0.1rem;
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:after {
+    content: '';
+}
 
 .table-responsive {
     overflow-x: hidden !important;
@@ -45,4 +62,67 @@
 
 .dataTables_empty {
     text-align: center;
+}
+
+
+// UI Sortable Categories
+
+.category-ul {
+
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+
+    .category-li {
+        list-style: none;
+        font-size: 1rem;
+        .category-name {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid #dedede;
+            height: 50px;
+            margin-left: 0;
+            padding-left: 30px;
+            &.with-children {
+                background: #ececec;
+                margin-left: 0;
+            }
+            .category-toggle {
+                display: block;
+                float: left;
+                position: relative;
+                cursor: pointer;
+                margin-right: 10px;
+                width: 20px;
+            }
+        }
+
+        .category-children {
+            display: none;
+            margin-left: 30px;
+        }
+    }
+}
+
+.widget-bottom-right {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 300px;
+    padding: 20px 20px 10px;
+    z-index: 10000;
+}
+#importWidget {
+    .progress-label {
+
+    }
+    .progress-wrapper {
+
+    }
 }

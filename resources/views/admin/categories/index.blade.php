@@ -12,7 +12,6 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="#"></a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Категории</li>
         </ol>
-        <h5 class="font-weight-bolder mb-0 mt-3">Категории</h5>
     </nav>
 @endsection
 
@@ -28,14 +27,36 @@
                 </div>
 
                 <div class="card-body px-2 pb-2">
-                    <ul class="sortable-main">
+
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-default shadow-secondary"
+                                    data-bs-toggle="modal" data-bs-target="#createNewCategoryModal">
+                                Создать категорию
+                            </button>
+                        </div>
+                    </div>
+
+                    <ul id="category-ui" class="category-ul mt-3">
                         @foreach($categories as $category)
-                            <li>{{ $category->translate->name }}</li>
-                            @if($category->childs()->count())
-                                @include('admin.components.category', ['categories' => $category->childs])
-                            @endif
+                            <li class="category-li">
+                                <div class="category-name @if($category->children()->count()) with-children @endif">
+                                    @if($category->children()->count())
+                                    <span class="category-toggle">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </span>
+                                    @endif
+                                    {{ $category->translate->name }}
+                                </div>
+                                <div class="category-children">
+                                    @if($category->children()->count())
+                                        @include('admin.categories.templates.category', ['categories' => $category->children])
+                                    @endif
+                                </div>
+                            </li>
                         @endforeach
                     </ul>
+
                 </div>
 
             </div>
@@ -43,12 +64,68 @@
     </div>
 @endsection
 
+@push('modals')
+    <div class="modal fade" id="createNewCategoryModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createNewCategoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-normal" id="createNewCategoryModalLabel">Создать категорию</h5>
+                    <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST">
+
+                        <div class="input-group input-group-outline my-3">
+                            <label class="form-label">Название</label>
+                            <input name="name" type="text" class="form-control">
+                        </div>
+
+                        <div class="input-group input-group-static my-3">
+                            <label class="form-label">Название</label>
+                            <select name="parent_id" class="form-control js-select">
+                                <option>Без родительской категории</option>
+                                @foreach($categories_all as $category)
+                                    <option value="{{ $category->id }}">{{ $category->translate->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn bg-gradient-primary">Создать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endpush
+
 @push('scripts')
     <script>
         (function ($) {
-            $(".sortable-main").sortable({
-                axis: "y"
-            });
+
+            $.fn.categoryUI = function(){
+                let handler = $(this);
+                $(handler).find('.category-toggle').on('click', function(){
+                    if($(this).closest('.category-li').hasClass('show')) {
+                        $(this).closest('.category-li').find('.category-children').first().slideUp();
+                        $(this).closest('.category-li').removeClass('show');
+                        $(this).html('<i class="fa-solid fa-chevron-right"></i>');
+                    } else {
+                        $(this).closest('.category-li').find('.category-children').first().slideDown();
+                        $(this).closest('.category-li').addClass('show');
+                        $(this).html('<i class="fa-solid fa-chevron-down"></i>');
+                    }
+                });
+            }
+
+            $('#category-ui').categoryUI();
+
+            $('.js-select').select2();
+
         })(jQuery)
     </script>
 @endpush
