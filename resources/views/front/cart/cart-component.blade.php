@@ -14,11 +14,11 @@
         </thead>
 
         <tbody class="cart-table__body">
-            @foreach($items as $item)
+            @foreach($cart->items as $item)
                 <tr class="cart-table__row">
                     <td class="cart-table__column cart-table__column--image">
                         <a href="#">
-                            <img src="{{ Storage::disk('products')->url($item->product->mainImage->filename) }}" alt="">
+                            <img src="{{ $item->product->mainImage->url }}" alt="">
                         </a>
                     </td>
                     <td class="cart-table__column cart-table__column--product">
@@ -35,7 +35,7 @@
                         </div>
                     </td>
                     <td class="cart-table__column cart-table__column--total" data-title="Total">
-                        {{ $item->product->retail * $item['quantity'] }} <span style="font-size: 0.8rem;">грн</span>
+                        {{ $item->product->retail * $item->quantity }} <span style="font-size: 0.8rem;">грн</span>
                     </td>
                     <td class="cart-table__column cart-table__column--remove">
                         <button wire:click="remove({{ $item->product->id }})" type="button" class="btn btn-light btn-sm btn-svg-icon">

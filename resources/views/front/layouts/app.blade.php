@@ -33,6 +33,13 @@
         <script>
             svg4everybody();
         </script>
+        <script>
+            (function($){
+                $.ajaxSetup({
+                    headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
+                });
+            })(jQuery)
+        </script>
         @stack('scripts')
     </body>
 

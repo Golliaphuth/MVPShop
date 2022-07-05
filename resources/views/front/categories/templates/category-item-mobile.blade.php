@@ -1,5 +1,5 @@
 <div class="mobile-links__item-sub-links" data-collapse-content>
-    <ul class="mobile-links mobile-links--level--2">
+    <ul class="mobile-links mobile-links--level--{{ $level }}">
         @foreach($categories as $cat)
         <li class="mobile-links__item" data-collapse-item>
             @if($cat->children()->count())
@@ -11,9 +11,8 @@
                         </svg>
                     </button>
                 </div>
-                <div class="mobile-links__item-sub-links" data-collapse-content>
-                    @include('front.categories.templates.category-item-mobile', ['categories' => $cat->children])
-                </div>
+                @php $level++; @endphp
+                @include('front.categories.templates.category-item-mobile', ['categories' => $cat->children, 'level' => $level])
             @else
                 <div class="mobile-links__item-title">
                     <a href="#" class="mobile-links__item-link">{{ $cat->translate->name }}</a>

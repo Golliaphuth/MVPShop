@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Services\ICartService;
+use App\Services\Cart\ICartService;
 use Illuminate\Http\Request;
 
 class CartController extends MainController

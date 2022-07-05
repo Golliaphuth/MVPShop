@@ -26,8 +26,17 @@
     "Last name": "Прізвище",
     "Patronymic": "По батькові",
     "City": "Місто",
+    "Warehouse": "Відділення",
+    "Address": "Адреса",
+    "Street": "Вулиця",
+    "BuildingNumber": "Будинок",
+    "Flat": "Квартира",
+    "Delivery method": "Спосіб доставки",
     "Password": "Пароль",
     "Password confirmation": "Пароль ще раз",
+    "Set delivery": "Оберіть спосіб доставки",
+    "Self-delivery": "Самовивіз з відділення Нова Пошта",
+    "Address-delivery": "Адресна доставка Нова Пошта",
 
     "I don`t have an account": "У мене немає аккаунту",
     "I already have an account": "У мене вже є аккаунт",
@@ -84,5 +93,13 @@
     "Order details": "Деталі замовлення",
 
     "Your Order": "Ваше замовлення",
-    "Place Order": "Замовити"
+    "Place Order": "Замовити",
+
+    "Parcel Shop": "Parcel Shop",
+    "Поштове відділення": "Поштове відділення",
+    "Поштомат ПриватБанку": "Поштомат ПриватБанку",
+    "Вантажне відділення": "Вантажне відділення",
+    "Поштомат": "Поштомат",
+
+    "You must enter minimum 3 characters": "Необхідно ввести мінімум 3 символи"
 }

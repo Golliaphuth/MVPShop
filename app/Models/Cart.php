@@ -9,19 +9,24 @@ class Cart extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'uuid',
         'customer_id',
-        'product_id',
-        'quantity',
     ];
 
     protected $with = [
-        'product'
+        'items'
     ];
 
-    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function items(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(CartItem::class);
+    }
+
+    public function customer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

@@ -5,6 +5,8 @@
 @import "../../../node_modules/@fortawesome/fontawesome-free/scss/v4-shims";
 @import "../../../node_modules/lightbox2/dist/css/lightbox.min.css";
 @import "../../../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../../../node_modules/select2/dist/css/select2.css";
+@import "../../../node_modules/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.css";
 
 $owl-image-path: "../img/";
 @import "../../../node_modules/owl.carousel/src/scss/owl.carousel";
@@ -66,4 +68,8 @@ $owl-image-path: "../img/";
 
 .products-list[data-layout=list] .product-card .product-card__addtocart {
     display: inline-block;
+}
+
+.hidden-box {
+    display: none;
 }

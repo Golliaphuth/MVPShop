@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\CustomerLoginRequest;
 use App\Http\Requests\Front\CustomerRegistrationRequest;
 use App\Models\Customer;
-use App\Services\ICartService;
+use App\Services\Cart\ICartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

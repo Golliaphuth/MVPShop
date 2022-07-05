@@ -26,8 +26,17 @@
     "Last name": "Фамилия",
     "Patronymic": "Отчество",
     "City": "Город",
+    "Warehouse": "Отделение",
+    "Address": "Адрес",
+    "Street": "Улица",
+    "BuildingNumber": "Дом",
+    "Flat": "Квартира",
+    "Delivery method": "Способ доставки",
     "Password": "Пароль",
     "Password confirmation": "Пароль еще раз",
+    "Set delivery": "Выберите способ доставки",
+    "Self-delivery": "Самовывоз с отделения Новая Почта",
+    "Address-delivery": "Адресная доставка Новая Почта",
 
     "I don`t have an account": "У меня нет аккаунта",
     "I already have an account": "У меня уже есть аккаунт",
@@ -84,5 +93,13 @@
     "Order details": "Детали заказа",
 
     "Your Order": "Ваш закзаз",
-    "Place Order": "Заказать"
+    "Place Order": "Заказать",
+
+    "Parcel Shop": "Parcel Shop",
+    "Поштове відділення": "Почтовое отделение",
+    "Поштомат ПриватБанку": "Почтомат приват банка",
+    "Вантажне відділення": "Грузовое отделение",
+    "Поштомат": "Почтомат",
+
+    "You must enter minimum 3 characters": "Вы должны ввести минимум 3 символа"
 }

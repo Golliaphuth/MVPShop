@@ -4286,7 +4286,7 @@ screen and (-ms-high-contrast:active) {
 
 .mobilemenu__content {
     flex-grow: 1;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     -webkit-overflow-scrolling: touch
 }
 

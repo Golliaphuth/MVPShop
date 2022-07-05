@@ -1,5 +1,8 @@
+@include('front.layouts.menu-mobile')
+
 <!-- mobile site__header -->
 <header class="site__header d-lg-none">
+
     <div class="mobile-header mobile-header--sticky mobile-header--stuck">
         <div class="mobile-header__panel">
             <div class="container">
@@ -36,21 +39,24 @@
 
                     <div class="mobile-header__search">
                         <form class="mobile-header__search-form" action="#">
+
                             <input class="mobile-header__search-input" name="search"
                                    placeholder="{{ __('Search') }}" aria-label="{{ __('Search') }}"
                                    type="text" autocomplete="off">
-                            <button class="mobile-header__search-button mobile-header__search-button--submit"
-                                    type="submit">
+
+                            <button class="mobile-header__search-button mobile-header__search-button--submit" type="submit">
                                 <svg width="20px" height="20px">
                                     <use xlink:href="{{ asset('images/front/sprite.svg#search-20') }}"></use>
                                 </svg>
                             </button>
+
                             <button class="mobile-header__search-button mobile-header__search-button--close"
                                     type="button">
                                 <svg width="20px" height="20px">
                                     <use xlink:href="{{ asset('images/front/sprite.svg#cross-20') }}"></use>
                                 </svg>
                             </button>
+
                             <div class="mobile-header__search-body"></div>
                         </form>
                     </div>
@@ -81,22 +87,14 @@
 {{--                        </div>--}}
 
                         <!-- Cart -->
-                        <div class="indicator indicator--mobile">
-                            <a href="#" class="indicator__button">
-                                <span class="indicator__area">
-                                    <svg width="20px" height="20px">
-                                        <use xlink:href="{{ asset('images/front/sprite.svg#cart-20') }}"></use>
-                                    </svg>
-                                    <span class="indicator__value">3</span>
-                                </span>
-                            </a>
-                        </div>
+                        <x-quick-cart/>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
+
 </header>
 <!-- mobile site__header / end -->
 
@@ -120,12 +118,8 @@
                                 </button>
                                 <div class="topbar-dropdown__body">
                                     <ul class="menu menu--layout--topbar menu--with-icons">
-                                        <li>
-                                            <a href="#">{{ __('My cabinet') }}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('front.logout') }}">{{ __('Logout') }}</a>
-                                        </li>
+                                        <li><a href="#">{{ __('My cabinet') }}</a></li>
+                                        <li><a href="{{ route('front.logout') }}">{{ __('Logout') }}</a></li>
                                     </ul>
                                 </div>
                             @endguest
@@ -275,8 +269,3 @@
         </div>
     </div>
 </header>
-
-<!-- mobilemenu -->
-<div class="mobilemenu">
-
-</div>

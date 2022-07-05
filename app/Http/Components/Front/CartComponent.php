@@ -2,8 +2,7 @@
 
 namespace App\Http\Components\Front;
 
-use App\Services\CartDatabaseService;
-use App\Services\CartService;
+use App\Services\Cart\CartDatabaseService;
 use Livewire\Component;
 
 class CartComponent extends Component
@@ -44,7 +43,7 @@ class CartComponent extends Component
     {
         return view('front.cart.cart-component', [
             'total' => $this->service->total(),
-            'items' => $this->service->all(),
+            'cart' => $this->service->all(),
         ]);
     }
 

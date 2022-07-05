@@ -19,6 +19,7 @@ class Customer extends Authenticatable
         'email',
         'phone',
         'location',
+        'location_ref', // Ref службы доставки Новоя Почта
         'password',
     ];
 
@@ -30,4 +31,9 @@ class Customer extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cart(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Cart::class);
+    }
 }

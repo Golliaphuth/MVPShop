@@ -22,6 +22,7 @@ class CustomerSeeder extends Seeder
             'email' => 'golliaphuth@gmail.com',
             'phone' => '+380663617207',
             'location' => 'Харьков',
+            'location_ref' => 'e71f8842-4b33-11e4-ab6d-005056801329',
             'password' => Hash::make('Anton-321'),
         ]);
     }
