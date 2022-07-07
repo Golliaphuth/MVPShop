@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 
 class Cart extends Model
 {
-    use HasFactory;
+    use HasFactory, Prunable;
 
     public $timestamps = false;
 
@@ -19,6 +20,11 @@ class Cart extends Model
     protected $with = [
         'items'
     ];
+
+    public function prunable()
+    {
+        return static::where('created_at', '<=', now()->subMonth());
+    }
 
     public function items(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

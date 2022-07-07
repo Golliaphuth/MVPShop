@@ -26,21 +26,6 @@
 
                 <div class="card-body px-4 pb-2">
 
-{{--                    <div class="row">--}}
-{{--                        <div class="col" style="padding: 0 50px;">--}}
-{{--                            <div class="input-group input-group-dynamic mb-4">--}}
-{{--                                <label for="category">Категория</label>--}}
-{{--                                <select name="category_id" id="category" class="js-select2 form-control">--}}
-{{--                                    <option></option>--}}
-{{--                                    <option value="0">Все</option>--}}
-{{--                                    @foreach($categories as $category)--}}
-{{--                                    <option value="{{ $category->id }}">{{ $category->translate->name }}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
                     <div class="table-responsive p-0">
                         <table id="dataTableProducts" class="table align-items-center mb-0" data-order='[[ 1, "asc" ]]'></table>
                     </div>
@@ -101,7 +86,7 @@
                     {title: '', data: 'translate.name'},
                     {title: '', data: 'category.breadcrumbs'},
                     {title: 'Наиманование', data: null},
-                    {title: 'Цена', data: 'price.retail'},
+                    {title: 'Цена', data: 'retail'},
                     {title: 'Остаток', data: 'balance'},
                     {title: 'sync', data: 'protected'},
                     {title: '', data: 'id'},

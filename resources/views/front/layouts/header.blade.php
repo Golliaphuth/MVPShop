@@ -108,7 +108,7 @@
                     <div class="topbar__item">
                         <div class="topbar-dropdown">
                             @guest()
-                                @include('front.components.auth')
+                                @include('front.components.auth', ['type' => 'Desktop'])
                             @else
                                 <button class="topbar-dropdown__btn" type="button">
                                     <span class="topbar__item-value">{{ __('My account') }}</span>

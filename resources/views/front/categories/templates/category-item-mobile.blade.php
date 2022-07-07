@@ -7,7 +7,7 @@
                     <a href="#" class="mobile-links__item-link">{{ $cat->translate->name }}</a>
                     <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                         <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                            <use xlink:href="images/front/sprite.svg#arrow-rounded-down-12x7"></use>
+                            <use xlink:href="{{ asset('images/front/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                         </svg>
                     </button>
                 </div>

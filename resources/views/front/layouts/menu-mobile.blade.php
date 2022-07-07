@@ -11,7 +11,7 @@
                 </a>
             </div>
             @else
-                @include('front.components.auth')
+                @include('front.components.auth', ['type' => 'Mobile'])
             @endauth
 
             <button type="button" class="mobilemenu__close">

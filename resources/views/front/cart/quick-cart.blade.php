@@ -17,7 +17,7 @@
         <script>
             (function($){
                 channelCart.subscribed(() => {
-                    console.log('cart subscribed');
+
                 }).listen('.cart', (event) => {
                     $('.indicator__value').text(event.count);
                     Livewire.emit('cartUpdated');

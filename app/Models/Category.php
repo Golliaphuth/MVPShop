@@ -18,6 +18,7 @@ class Category extends Model
         'link',
         'filename',
         'protected',
+        'sort',
         'deleted_at',
     ];
 
@@ -26,7 +27,8 @@ class Category extends Model
     ];
 
     protected $with = [
-        'translate'
+        'translate',
+        'children'
     ];
 
     public function translate(): \Illuminate\Database\Eloquent\Relations\HasOne
@@ -46,7 +48,7 @@ class Category extends Model
 
     public function children(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(self::class, 'parent_id', 'id')->with('children');
+        return $this->hasMany(self::class, 'parent_id', 'id')->with('children')->orderBy('sort', 'ASC');
     }
 
     public function scopeMain($query)

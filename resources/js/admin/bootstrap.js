@@ -11,7 +11,6 @@ window._ = require('lodash');
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 require('@fortawesome/fontawesome-free');
-require('jquery-ui/ui/widgets/sortable');
 require('select2');
 require('./spinner.js');
 require('./datatables-locale.js');

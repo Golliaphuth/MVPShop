@@ -21,38 +21,14 @@
             <div class="shop-layout__sidebar">
                 <div class="block block-sidebar">
                     <div class="block-sidebar__item">
+
+                        @if($products->count() > 1)
                         <div class="widget-filters widget" data-collapse data-collapse-opened-class="filter--opened">
                             <h4 class="widget__title">{{ __('Filters') }}</h4>
                             <div class="widget-filters__list">
 
                                 <!-- Category filter -->
-                                @if($category->children->count() > 0)
-                                    <div class="widget-filters__item">
-                                        <div class="filter filter--opened" data-collapse-item>
-                                            <button type="button" class="filter__title"
-                                                    data-collapse-trigger>{{ __('Сategories') }}
-                                                <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use
-                                                        xlink:href="{{ asset('images/front/sprite.svg#arrow-rounded-down-12x7') }}"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="filter__body" data-collapse-content>
-                                                <div class="filter__container">
-                                                    <div class="filter-categories">
-                                                        <ul class="filter-categories__list">
-                                                            @foreach($category->children as $cat)
-                                                                <li class="filter-categories__item filter-categories__item--child">
-                                                                    <a href="{{ route('front.category', ['slug' => $cat->slug]) }}">{{ $cat->translate->name }}</a>
-                                                                    <div class="filter-categories__counter"></div>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
+                                @include('front.categories.templates.filter-category', ['category' => $category])
 
                                 <!-- Filter price -->
                                 @include('front.categories.templates.filter-price')
@@ -69,6 +45,8 @@
                                 <button id="btnFilterClear" class="btn btn-secondary btn-sm ml-2">{{ __('Reset') }}</button>
                             </div>
                         </div>
+                        @endif
+
                     </div>
 
                     @if(count($newArrivals) > 0)
@@ -140,6 +118,7 @@
 
                                 <div class="view-options__divider"></div>
 
+                                @if($products->count() > 1)
                                 <div class="view-options__control">
                                     <label for="">{{ __('Sort By') }}</label>
                                     <div>
@@ -155,6 +134,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                @endif
 
                             </div>
                         </div>

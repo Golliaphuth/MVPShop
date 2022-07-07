@@ -23,6 +23,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
 
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function(){
         Route::get('/', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('index');
+        Route::post('/reload', [\App\Http\Controllers\Admin\CategoryController::class, 'reload'])->name('reload');
+        Route::post('/edit/{category}/{new?}', [\App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('edit');
+        Route::post('/store/', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('store');
+        Route::post('/update/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update');
+        Route::post('/sort/{category}/{vector}', [\App\Http\Controllers\Admin\CategoryController::class, 'sort'])->name('sort');
     });
 
     Route::group(['prefix' => 'import', 'as' => 'import.'], function(){

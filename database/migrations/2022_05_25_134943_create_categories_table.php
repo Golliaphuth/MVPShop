@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->string('link')->nullable();
             $table->string('filename')->nullable();
             $table->boolean('protected')->default(0);
+            $table->boolean('sort')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

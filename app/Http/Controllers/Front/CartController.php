@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Services\Cart\ICartService;
+use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Http\Request;
 
 class CartController extends MainController

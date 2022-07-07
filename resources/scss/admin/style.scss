@@ -126,3 +126,89 @@
 
     }
 }
+
+.category-widget {
+    display: block;
+    position: relative;
+    padding: 30px;
+    max-width: 650px;
+    ul {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        li {
+            list-style: none;
+            display: block;
+            position: relative;
+            margin: 3px 0;
+            .category-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                position: relative;
+                padding: 10px;
+                background: #e3e3e3;
+                cursor: pointer;
+                &:hover {
+                    background: #d9d9d9;
+                }
+                .arrow {
+                    display: inline-block;
+                    position: relative;
+                    padding: 0 5px;
+                    cursor: pointer;
+                    &:hover {
+                        color: #262424;
+                    }
+                }
+                .category-name {
+                    display: inline-block;
+                    position: relative;
+                    padding: 0 5px;
+                    flex-grow: 1;
+                }
+                .category-sort {
+                    display: inline-block;
+                    position: relative;
+                    padding: 0 5px;
+                    margin-right: 10px;
+                    &:hover {
+                        color: #262424;
+                    }
+                }
+                .category-create {
+                    display: inline-block;
+                    position: relative;
+                    padding: 0 5px;
+                    margin-right: 10px;
+                    &:hover {
+                        color: #262424;
+                    }
+                }
+                .category-edit {
+                    display: inline-block;
+                    position: relative;
+                    padding: 0 5px;
+                    margin-right: 10px;
+                    &:hover {
+                        color: #262424;
+                    }
+                }
+            }
+            .category-children {
+                display: none;
+                margin-left: 30px;
+                &.show {
+                    display: block;
+                }
+            }
+
+        }
+    }
+}
+
+
+.context-menu {
+
+}

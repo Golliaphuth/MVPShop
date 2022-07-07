@@ -1,3 +1,4 @@
+@if($products_price_min !== $products_price_max)
 <div class="widget-filters__item">
     <div class="filter filter--opened" data-collapse-item>
         <button type="button" class="filter__title" data-collapse-trigger>{{ __('Price') }}
@@ -7,6 +8,7 @@
         </button>
         <div class="filter__body" data-collapse-content>
             <div class="filter__container">
+
                 <div class="filter-price"
                      data-min="{{ $products_price_min }}"
                      data-max="{{ $products_price_max }}"
@@ -22,7 +24,9 @@
                         <span style="font-size: 0.8rem;"> грн</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+@endif
